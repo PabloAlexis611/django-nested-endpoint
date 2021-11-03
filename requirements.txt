@@ -1,0 +1,3 @@
+# Main dependencies
+django==3.2.9
+djangorestframework==3.12.4
