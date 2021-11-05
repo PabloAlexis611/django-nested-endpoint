@@ -22,14 +22,15 @@ class Drivetrain(models.TextChoices):
     FWD = 'FWD', _("Front Wheel Drive")
     RWD = 'RWD', _("Rear Wheel Drive")
 
-class Make(models.Model):
+class Manufacturer(models.Model):
     name = models.CharField(_("Name"), max_length=50, unique=True)
     creation_date = models.DateField(_("Creation date"), auto_now=False, auto_now_add=False)
 
 class Car(models.Model):
-    make = models.CharField(_("Make"), max_length=50)
+    manufacturer = models.ForeignKey(Manufacturer, on_delete=models.CASCADE)
     model = models.CharField(_("Model"), max_length=50)
     color = models.CharField(_("Color"), max_length=5, choices=Color.choices)
     engine_type = models.CharField(_("Engine Type"), max_length=4, choices=Engine.choices)
     transmission_type = models.CharField(_("Transmission Type"), max_length=9, choices=Transmission.choices)
     drivetrain_type = models.CharField(_("Drivetrain Type"), max_length=3, choices=Drivetrain.choices)
+    year = models.DateField(_("Manafacturing date"), auto_now=False, auto_now_add=False)
