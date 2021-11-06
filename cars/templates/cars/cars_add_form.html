@@ -1,0 +1,9 @@
+{% extends 'cars/base.html' %}
+{% block content %}
+<h1> Adding a car </h1>
+<hr/>
+<form method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+</form>
+{% endblock content %}

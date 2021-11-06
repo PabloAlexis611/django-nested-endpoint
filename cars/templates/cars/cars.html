@@ -1,0 +1,20 @@
+{% extends 'cars/base.html' %}
+{% block content %}
+    <h1>Cars</h1>
+    <ol>
+    {% for car in car_objects %}
+        <li>
+            <h2> {{ car.manufacturer.name }} - {{ car.model }} </h2>
+            <ul>
+                <li>Color: {{ car.color }}</li>
+                <li>Engine Type: {{ car.engine_type }}</li>
+                <li>Drivetrain: {{ car.drivetrain_type }}</li>
+                <li>Transmission: {{ car.transmission_type }}</li>
+                <li>Production Date: {{ car.prod_date }}</li>
+            </ul>
+        <li>
+    {% empty %}
+        <h2>No cars listed yet.</h2>
+    {% endfor %}
+    </ol>
+{% endblock content %}
