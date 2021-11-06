@@ -1,8 +1,20 @@
 {% extends 'cars/base.html' %}
 {% block content %}
     <h1>Home</h1>
-    <ol>
-        <li><a href="">Cars</a></li>
-        <li><a href="">Manufacturers</a></li>
-    </ol>
+    <ul>
+        <li>
+            Cars
+            <ol>
+                <li><a href="{% url 'cars-list' %}">See Cars List</a></li>
+                <li><a href="{% url 'cars-create' %}">Add a Car</a></li>
+            </ol>
+        </li>
+        <li>
+            Manufacturers
+            <ol>
+                <li><a href="{% url 'manufacturers-list' %}">See Manufacturers List</a></li>
+                <li><a href="{% url 'manufacturers-create' %}">Add a Manufacturer</a></li>
+            </ol>
+        </li>
+    </ul>
 {% endblock content %}
