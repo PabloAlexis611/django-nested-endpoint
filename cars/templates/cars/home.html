@@ -1,0 +1,24 @@
+{% extends 'cars/base.html' %}
+{% block content %}
+    <h1>Home</h1>
+    <ul>
+        <li>
+            Cars
+            <ol>
+                <li><a href="{% url 'cars-list' %}">See Cars List</a></li>
+                <li><a href="{% url 'cars-create' %}">Add a Car</a></li>
+                <li><a href="{% url 'cars-per-year-list' 2009 %}">See cars from 2009</a></li>
+                <li><a href="{% url 'cars-per-year-list' 2017 %}">See cars from 2017</a></li>
+            </ol>
+        </li>
+        <li>
+            Manufacturers
+            <ol>
+                <li><a href="{% url 'manufacturers-list' %}">See Manufacturers List</a></li>
+                <li><a href="{% url 'manufacturers-create' %}">Add a Manufacturer</a></li>
+                <li><a href="{% url 'manufacturers-per-country-list' 'France' %}">See manufacturers from France</a></li>
+                <li><a href="{% url 'manufacturers-per-country-list' 'United States' %}">See manufacturers from United States</a></li>
+            </ol>
+        </li>
+    </ul>
+{% endblock content %}

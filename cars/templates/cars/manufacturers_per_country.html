@@ -1,0 +1,16 @@
+{% extends 'cars/base.html' %}
+{% block content %}
+    <h1>Manufacturers per country: <b>{{ country }}</b></h1>
+    <ol>
+    {% for manufacturer in manufacturer_objects %}
+        <li>
+            <h2> {{ manufacturer.name }} - {{ manufacturer.country }} </h2>
+            <ul>
+                <li>Foundation Date: {{ manufacturer.creation_date }}</li>
+            </ul>
+        </li>
+    {% empty %}
+        <h2> No manufacturers listed in {{ country }}.</h2>
+    {% endfor %}
+    </ol>
+{% endblock content %}

@@ -14,8 +14,23 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, register_converter
+from . import converters
+from cars.views import CarsListView, CarsAddFormView, CarsPerYearListView, ManufacturersListView, ManufacturersFormView, ManufacturersPerCountryListView, HomeTemplateView
+
+register_converter(converters.FourDigitYearConverter, 'yyyy')
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('admin/', admin.site.urls, name='admin'),
+    path('home/', HomeTemplateView.as_view(), name='home'),
+    path('api/cars/', CarsListView.as_view(), name='cars-list'),
+    path('api/cars/create/', CarsAddFormView.as_view(), name='cars-create'),
+    path('api/cars/<yyyy:year>/',
+         CarsPerYearListView.as_view(), name='cars-per-year-list'),
+    path('api/manufacturers/', ManufacturersListView.as_view(),
+         name='manufacturers-list'),
+    path('api/manufacturers/create/', ManufacturersFormView.as_view(),
+         name='manufacturers-create'),
+    path('api/manufacturers/<str:country>/',
+         ManufacturersPerCountryListView.as_view(), name='manufacturers-per-country-list')
 ]
