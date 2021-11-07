@@ -11,6 +11,7 @@ class Color(models.TextChoices):
 
 
 class Engine(models.TextChoices):
+    ELECTRIC = 'Electric', _("Electric")
     V6 = 'V6', _("V6")
     V8 = 'V8', _("V8")
     V12 = 'V12', _("V12")
@@ -33,13 +34,15 @@ class Manufacturer(models.Model):
         _("Creation date"), auto_now=False, auto_now_add=False)
     country = models.CharField(_("Country"), max_length=50)
 
+    def __str__(self) -> str:
+        return self.name
 
 class Car(models.Model):
     manufacturer = models.ForeignKey(Manufacturer, on_delete=models.CASCADE)
     model = models.CharField(_("Model"), max_length=50)
     color = models.CharField(_("Color"), max_length=5, choices=Color.choices)
     engine_type = models.CharField(
-        _("Engine Type"), max_length=4, choices=Engine.choices)
+        _("Engine Type"), max_length=8, choices=Engine.choices)
     transmission_type = models.CharField(
         _("Transmission Type"), max_length=9, choices=Transmission.choices)
     drivetrain_type = models.CharField(
