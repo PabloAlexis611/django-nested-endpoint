@@ -2,8 +2,11 @@
 {% block content %}
 <h1> Adding a manufacturer </h1>
 <hr/>
+<h3>Fill the information below:</h3>
 <form method="post">
     {% csrf_token %}
-    {{form.as_p}}
+    {{form.as_ul}}
+    <br/>
+    <input type="submit" value="Submit"/>
 </form>
 {% endblock content %}

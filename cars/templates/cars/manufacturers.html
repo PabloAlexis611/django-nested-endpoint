@@ -6,13 +6,9 @@
         <li>
             <h2>{{ manufacturer.name }}</h2>
             <ul>
-                <li>Color: {{ car.color }}</li>
-                <li>Engine Type: {{ car.engine_type }}</li>
-                <li>Drivetrain: {{ car.drivetrain_type }}</li>
-                <li>Transmission: {{ car.transmission_type }}</li>
-                <li>Production Date: {{ car.prod_date }}</li>
+                <li>Foundation Date: {{ manufacturer.creation_date }}</li>
             </ul>
-        <li>
+        </li>
     {% empty %}
         <h2>No manufacturers listed yet.</h2>
     {% endfor %}
