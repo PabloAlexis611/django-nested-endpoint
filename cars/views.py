@@ -3,9 +3,11 @@ from django.views.generic.base import TemplateView
 from cars.forms import CarsForm, ManufacturersForm
 from cars.models import Car, Manufacturer
 
+
 class HomeTemplateView(TemplateView):
     """Default Home view"""
     template_name = 'home.html'
+
 
 class CarsListView(ListView):
     """List view for cars"""
@@ -19,6 +21,10 @@ class CarsAddFormView(FormView):
     form_class = CarsForm
     template_name = 'cars_add_form.html'
     success_url = '/api/cars/'
+
+    def form_valid(self, form):
+        form.save()
+        return super().form_valid(form)
 
 
 class CarsPerYearListView(ListView):
@@ -63,5 +69,9 @@ class ManufacturersPerCountryListView(ListView):
 class ManufacturersFormView(FormView):
     """Form view for manufacturers"""
     form_class = ManufacturersForm
-    template_name = 'manufacturers_form.html'
+    template_name = 'manufacturers_add_form.html'
     success_url = '/api/manufacturers/'
+
+    def form_valid(self, form):
+        form.save()
+        return super().form_valid(form)
