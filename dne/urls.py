@@ -26,7 +26,7 @@ urlpatterns = [
     path('api/cars/', CarsListView.as_view(), name='cars-list'),
     path('api/cars/create/', CarsAddFormView.as_view(), name='cars-create'),
     path('api/cars/<yyyy:year>/',
-         CarsPerYearListView.as_view(), 'cars-per-year-list'),
+         CarsPerYearListView.as_view(), name='cars-per-year-list'),
     path('api/manufacturers/', ManufacturersListView.as_view(),
          name='manufacturers-list'),
     path('api/manufacturers/create/', ManufacturersFormView.as_view(),
